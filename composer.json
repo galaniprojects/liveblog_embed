@@ -9,7 +9,7 @@
         "type": "drupal-module",
         "version":"8.x-1.x-dev",
         "source": {
-          "url": "git@github.com:drunomics/yaem.git",
+          "url": "git@github.com:galaniprojects/yaem.git",
           "type": "git",
           "reference":"master"
         }
