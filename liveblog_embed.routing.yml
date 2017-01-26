@@ -1,0 +1,6 @@
+liveblog_embed.embed:
+  path: '/liveblog/embed'
+  defaults:
+    _controller: '\Drupal\liveblog_embed\Controller\EmbedController::embed'
+  requirements:
+    _access: 'TRUE'

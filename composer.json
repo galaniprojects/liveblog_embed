@@ -1,0 +1,24 @@
+{
+  "name": "drupal/liveblog_embed",
+  "description": "Liveblog social media embeds.",
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name": "drupal/yaem",
+        "type": "drupal-module",
+        "version":"8.x-1.x-dev",
+        "source": {
+          "url": "git@github.com:drunomics/yaem.git",
+          "type": "git",
+          "reference":"master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.3",
+    "drupal/liveblog": "8.x-1.x-dev",
+    "drupal/yaem": "8.x-1.0-dev"
+  }
+}

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.liveblog_post.field_embed_url
+  module:
+    - link
+    - liveblog
+id: liveblog_post.liveblog_post.field_embed_url
+field_name: field_embed_url
+entity_type: liveblog_post
+bundle: liveblog_post
+label: 'Embed url'
+description: 'The embed url field contains urls which will be embedded below the liveblog post.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

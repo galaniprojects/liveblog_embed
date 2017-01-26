@@ -1,0 +1,6 @@
+name: Liveblog embed
+description: Adds social media embeds for liveblog posts.
+type: module
+core: 8.x
+dependencies:
+  - liveblog

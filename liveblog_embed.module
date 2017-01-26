@@ -1,0 +1,10 @@
+<?php
+/**
+ * @file
+ * Drupal module file.
+ */
+
+/**
+ * Module id.
+ */
+const LIVEBLOG_EMBED = 'liveblog_embed';

@@ -1,0 +1,61 @@
+<?php
+/**
+ * @file
+ * Drupal install file.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Configures form and view display of the field_embed_url.
+ */
+function liveblog_embed_install() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.liveblog_post.liveblog_post.default');
+  if ($config) {
+    if ($content = $config->get('content')) {
+      $content['field_embed_url'] = [
+        'type' => 'link_default',
+        'weight' => 10,
+        'settings' => [
+          'titplaceholder_url' => '',
+          'placeholder_title' => '',
+        ],
+        'third_party_settings' => [],
+      ];
+
+      $config->set('content', $content)->save();
+    }
+
+    if ($dependencies = $config->get('dependencies')) {
+      $dependencies['config'][] = 'field.field.liveblog_post.liveblog_post.field_embed_url';
+      if (!in_array(LIVEBLOG_EMBED, $dependencies['module'])) {
+        $dependencies['module'][] = LIVEBLOG_EMBED;
+      }
+      $config->set('dependencies', $dependencies)->save();
+    }
+  }
+
+  $config = $config_factory->getEditable('core.entity_view_display.liveblog_post.liveblog_post.default');
+  if ($config) {
+    if ($content = $config->get('content')) {
+      $content['field_embed_url'] = [
+        'type' => 'yaem_embed',
+        'label' => 'hidden',
+        'weight' => 10,
+        'settings' => [],
+        'third_party_settings' => [],
+      ];
+
+      $config->set('content', $content)->save();
+    }
+
+    if ($dependencies = $config->get('dependencies')) {
+      $dependencies['config'][] = 'field.field.liveblog_post.liveblog_post.field_embed_url';
+      if (!in_array(LIVEBLOG_EMBED, $dependencies['module'])) {
+        $dependencies['module'][] = LIVEBLOG_EMBED;
+      }
+      $config->set('dependencies', $dependencies)->save();
+    }
+  }
+}
