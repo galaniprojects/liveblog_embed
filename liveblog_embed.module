@@ -3,8 +3,24 @@
  * @file
  * Drupal module file.
  */
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\Entity\Node;
 
 /**
  * Module id.
  */
 const LIVEBLOG_EMBED = 'liveblog_embed';
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for user entities.
+ */
+function liveblog_embed_node_view(array &$build, Node $node, EntityViewDisplayInterface $display) {
+  if ($display->getComponent('liveblog_posts')) {
+    $javascriptSettings = [];
+    $account = \Drupal::currentUser();
+    if ($account->hasPermission('edit liveblog_post entity')) {
+      $build['liveblog_posts']['#attached']['library'][] = 'liveblog_embed/embed';
+      $build['liveblog_posts']['#attached']['drupalSettings']['liveblog_embed'] = $javascriptSettings;
+    }
+  }
+}

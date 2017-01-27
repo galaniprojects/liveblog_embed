@@ -1,0 +1,13 @@
+embed:
+  title: 'Liveblog embed handler'
+  css:
+    theme:
+      css/liveblog_embed.css: {}
+  js:
+    js/liveblog_embed.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
+    - core/jquery.once
+    - core/drupal.editor
+    - liveblog/assets

@@ -1,0 +1,22 @@
+.liveblog-embed--preview {
+    max-width: 400px;
+    height: 80px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: relative;
+}
+
+.liveblog-embed--preview.open {
+}
+
+.liveblog-embed--preview--overlay {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    box-shadow: inset 0px -10px 20px 10px rgba(255, 255, 255, 0.85);
+    z-index: 1;
+    cursor: pointer;
+}
