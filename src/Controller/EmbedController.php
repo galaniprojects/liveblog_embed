@@ -67,17 +67,17 @@ class EmbedController extends ControllerBase {
    */
   public function embed(Request $request) {
     $url = $request->query->get('url');
-    $content = [];
 
-    if ($element = $this->embedService->renderUrl($url)) {
-      $content = $this->liveblogRenderer->render($element);
-    }
+    $renderer = $this->embedService->getRenderer($url);
+    $element = $renderer->render($url);
 
-    if (empty($content)) {
+    if (empty($element)) {
       return new Response('Invalid url: ' . $url, Response::HTTP_NO_CONTENT);
     }
 
-    return new JsonResponse($content);
+    $data = $this->liveblogRenderer->render($element);
+    $data['renderer'] = $renderer->getPluginId();
+    return new JsonResponse($data);
   }
 
 }
