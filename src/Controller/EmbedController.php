@@ -7,6 +7,7 @@ use Drupal\liveblog\LiveblogRendererInterface;
 use Drupal\Core\Controller\ControllerBase;
 
 use Drupal\yaem\Service\EmbedServiceInterface;
+use Drupal\yaem\Yaem;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +50,7 @@ class EmbedController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get(YAEM_EMBED_SERVICE),
+      $container->get(Yaem::YAEM_EMBED_SERVICE),
       $container->get('liveblog.renderer')
     );
   }
